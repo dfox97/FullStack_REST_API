@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteRule ^teams(.*) ./read.php [L,QSA]
+
+RewriteRule players/tid/(.*)/pid/(.*) read_single_player.php?tid=$1&pid=$2
+RewriteRule players/tid/(.*) read_single_player.php?tid=$1
+RewriteRule ^players(.*) read_single_player.php

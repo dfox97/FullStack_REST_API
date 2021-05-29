@@ -1,0 +1,42 @@
+html{
+    height: 100%;
+  }
+  body {
+    min-height: 100%;
+  }
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+button:hover {
+    background-color: #0F5897;
+    border: 1px solid #0F5897;
+}
+.httpform{
+    float:right; 
+    width:50%;
+}
+
+.dropbtn{
+    text-align: center;
+}
+.RespondDiv{
+    float: left;
+    width: 50%;
+    
+ 
+}
+.messagebox {
+    border-radius: 5px;
+    background-color: #eee;
+    padding: 20px 5px;
+    width:100%;
+    text-align: center;
+
+  }
+.instructions{
+    float: left;
+   
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Interface-Daniel-Fox</title>
+    <link rel="stylesheet" href="interface.css">
+    <script src="interface.js"></script>
+</head>
+
+<body>
+    
+        
+    <div class="RespondDiv" >
+    <h1>Message Response</h1> 
+    <p class="messagebox"id="Response"> Response Here </p>
+    <!-- <p><button id="getMessage"> Get Message </button></p> -->
+    </div>
+
+
+<div class="httpform">
+    <h1>Requests</h1>
+  <form id="formid" class="formid">
+  <select id="requestval" name="request" class="dropbtn"><br>
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="DELETE">DELETE</option>
+        <option value="PUT">PUT</option>
+    </select>
+    <input type="text" id="input" name="requesturl" input size="80" height="5" placeholder="https://student.csc.liv.ac.uk/~sgdfox/v1/read"><br>
+    <textarea name="JSON" id="textfield" cols="80" rows="5" maxlength="80" placeholder="body"></textarea><br>
+    <input type="button" value="Submit" onclick=displayData(); />
+    <button type="reset" value="Reset" onclick=setData();>Reset</button>
+  </form>
+</div>
+
+<div class="instructions" id="instruction">
+    <h1>Instructions</h1>
+    <p>The Web server is developed using REST API with PHP and MYSQL. The server demonstrates a basic CRUD REST application consisting of Read (GET), Write(POST), Remove(DELETE),Change (UPDATE). </p>
+    <ul><br>
+        <li>Retrieve information on all the teams (this does not include information on the players of each team, but should include a link to the collection resource for all players of each team), sorted by team names;
+            <ul>
+              <li><b>Link: https://student.csc.liv.ac.uk/~sgdfox/v1/read</b></li>
+              <li>Method:GET</li>
+              <li>Result:Shows all teams</li>
+            </ul>
+          </li><br>
+        <li>Retrieve information on all players of a specific team;
+          <ul>
+            <li>Link:<b> https://student.csc.liv.ac.uk/~sgdfox/v1/Players/tid/{tid:num}</b></li>
+            <li>
+                Example:https://student.csc.liv.ac.uk/~sgdfox/v1/players/tid/1
+                </li>
+                <li>Method:GET</li>
+            <li>
+                Result:
+                {"pid":1,"tid":1,"surname":"Jones","firstname":"John","nationality":"British","birth_date":"1995-12-12"},{"pid":2,"tid":1,...}
+                </li>
+          </ul>
+        </li><br>
+        <li> Retrieve information on an existing player of a team;
+            <ul>
+              <li>Link: <b>student.csc.liv.ac.uk/~sgdfox/v1/Players/tid/{tidnum}/pid/{pidnum}</b></b></li>
+              <li>Example:https://student.csc.liv.ac.uk/~sgdfox/v1/players/tid/1/pid/2</li>
+            <li>Method:GET</li>
+              <li>
+                  Result:
+                  {"pid":2,"tid":1,"surname":"Bob","firstname":"Lazar","nationality":"French","birth_date":"1997-01-10"}
+                  </li>
+            </ul>
+          </li><br>
+        
+          <li>Add a player / team member to an existing team;
+            <ul>
+              <li>Link: <b>student.csc.liv.ac.uk/~sgdfox/v1/Players/tid/{tidnum}</b></b></li>
+              <li>Example:https://student.csc.liv.ac.uk/~sgdfox/v1/players/tid/1</li>
+            <li>Method:POST</li>
+            <li>
+                JSON input:<br>
+                {
+                    <ul>"pid":"4",</ul>
+                    <ul>"surname":"Fox",</ul>
+                    <ul>"firstname":"Daniel",</ul>
+                    <ul>"nationality":"british",</ul>
+                    <ul>"birth_date":"1997-01-23"</ul>
+                }
+                </li>
+              <li>
+                  Result:Will be inserted in mysql, tid is set by the link url {tidnum}.This can be verified by calling the GET method to view
+                  </li>
+            </ul>
+          </li><br>
+    
+          <li>Delete an existing player / team member from a team;
+            <ul>
+              <li>Link: <b>student.csc.liv.ac.uk/~sgdfox/v1/Players/tid/{tidnum}/pid/{pidnum}</b></b></li>
+              <li>Example:https://student.csc.liv.ac.uk/~sgdfox/v1/players/tid/2/pid/5</li>
+            <li>Method:DELETE</li>
+            <li> JSON input not required as player is removed from primary key pid number.</li>
+              <li>
+                  Result:Will be deleted in mysql, tid and pid is set by the link url {tidnum} and {pidnum} .This can be verified by calling the GET method to view</li>
+            </ul>
+          </li>
+    
+          <li>update information for an existing player / team member of a team.
+            <ul>
+              <li>Link: <b>student.csc.liv.ac.uk/~sgdfox/v1/Players</b></b></li>
+              <li>Example:https://student.csc.liv.ac.uk/~sgdfox/v1/Players</li>
+            <li>Method:PUT</li>
+            <li> JSON input:<br>
+                {
+                    <ul>"pid":"4",</ul>
+                    <ul>"surname":"Fox",</ul>
+                    <ul>"firstname":"Daniel",</ul>
+                    <ul>"nationality":"British",</ul>
+                    <ul>"birth_date":"1997-01-23"</ul>
+                    <ul>"tid":"3"</ul>
+                }</li>
+              <li>
+                  Result:Will be deleted in mysql, tid and pid is set by the link url {tidnum} and {pidnum} .This can be verified by calling the GET method to view</li>
+            </ul>
+          </li>
+      </ul>
+    </div>
+
+</body>
+</html>
