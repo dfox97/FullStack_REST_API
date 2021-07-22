@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 class Database {
     private $host="studdb.csc.liv.ac.uk";
     private $user="sgdfox";
-    private $passwd="danny1";
+    private $passwd="NULL";
     private $database="sgdfox";
     public $conn;
 
